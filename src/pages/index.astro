@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { works } from '../data/works';
+import { formatDate, toIsoDate } from '../lib/format';
+
+const notes = (await getCollection('notes')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<Base>
+  <section class="hero">
+    <p class="hero__eyebrow">Tarapon — Kanagawa, Japan</p>
+    <h1>つくったもの、<br />つくりかけのもの。</h1>
+    <p class="hero__lead">
+      神奈川でコードを書いています。ここは制作物と作業ログの置き場です。日記やまとまった話は
+      <a href="https://00ts.fyi">00ts.fyi</a> に書いています。
+    </p>
+  </section>
+
+  <div class="sheet">
+    <section aria-labelledby="works">
+      <div class="section-head">
+        <p class="section-head__num">01</p>
+        <h2 id="works">制作物</h2>
+        <p class="section-head__meta">{works.length} {works.length === 1 ? 'project' : 'projects'}</p>
+      </div>
+      <ol class="entries">
+        {
+          works.map((work) => (
+            <li class="entry row">
+              <p class="row__stamp">{work.year}</p>
+              <div>
+                <h3>
+                  <a href={work.href}>
+                    {work.title}
+                    <span class="ext" aria-hidden="true">↗</span>
+                  </a>
+                </h3>
+                <p class="entry__meta">{work.meta}</p>
+                <p class="entry__desc">{work.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section aria-labelledby="notes">
+      <div class="section-head">
+        <p class="section-head__num">02</p>
+        <h2 id="notes">記録</h2>
+        <p class="section-head__meta">{notes.length} {notes.length === 1 ? 'note' : 'notes'}</p>
+      </div>
+      <ul class="entries">
+        {
+          notes.map((note) => (
+            <li class="note-row row">
+              <p class="row__stamp">
+                <time datetime={toIsoDate(note.data.date)}>{formatDate(note.data.date)}</time>
+              </p>
+              <a href={`/notes/${note.id}/`}>
+                <span class="entry__title">{note.data.title}</span>
+                <span class="entry__desc">{note.data.summary}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .sheet > section + section {
+    margin-top: clamp(3rem, 7vw, 5rem);
+  }
+
+  .note-row .entry__title,
+  .note-row .entry__desc {
+    display: block;
+  }
+
+  .note-row .entry__desc {
+    margin-top: 0.55rem;
+  }
+</style>

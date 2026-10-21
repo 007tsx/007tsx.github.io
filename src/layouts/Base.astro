@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'つくったもの、つくりかけのもの。神奈川でコードを書いています。',
+} = Astro.props;
+
+const pageTitle = title ? `${title} — 007tsx` : '007tsx — つくったもの、つくりかけのもの。';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#fbfaf6" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ</a>
+    <div class="page">
+      <header class="masthead">
+        <a class="wordmark" href="/">007tsx</a>
+        <nav aria-label="外部リンク">
+          <a href="https://00ts.fyi">00ts.fyi<span aria-hidden="true"> ↗</span></a>
+          <a href="https://github.com/007tsx">GitHub<span aria-hidden="true"> ↗</span></a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <p>© {year} tarapon</p>
+        <nav aria-label="フッター">
+          <a href="https://00ts.fyi">00ts.fyi</a>
+          <a href="https://github.com/007tsx">GitHub</a>
+          <a href="https://github.com/007tsx/007tsx.github.io">Source</a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>

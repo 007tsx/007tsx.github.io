@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="007tsx">
+  <rect width="32" height="32" fill="#a93b22" />
+  <text
+    x="16"
+    y="21.5"
+    text-anchor="middle"
+    font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+    font-size="13"
+    font-weight="500"
+    letter-spacing="-0.5"
+    fill="#fbfaf6"
+  >07</text>
+</svg>
