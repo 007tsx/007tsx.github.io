@@ -11,7 +11,7 @@ const notes = (await getCollection('notes')).sort(
 
 <Base>
   <section class="hero">
-    <p class="hero__eyebrow">Tarapon — Kanagawa, Japan</p>
+    <p class="hero__eyebrow">tarapon / 神奈川</p>
     <h1>つくったもの、<br />つくりかけのもの。</h1>
     <p class="hero__lead">
       神奈川でコードを書いています。ここは制作物と作業ログの置き場です。日記やまとまった話は
@@ -24,7 +24,6 @@ const notes = (await getCollection('notes')).sort(
       <div class="section-head">
         <p class="section-head__num">01</p>
         <h2 id="works">制作物</h2>
-        <p class="section-head__meta">{works.length} {works.length === 1 ? 'project' : 'projects'}</p>
       </div>
       <ol class="entries">
         {
@@ -51,9 +50,8 @@ const notes = (await getCollection('notes')).sort(
       <div class="section-head">
         <p class="section-head__num">02</p>
         <h2 id="notes">記録</h2>
-        <p class="section-head__meta">{notes.length} {notes.length === 1 ? 'note' : 'notes'}</p>
       </div>
-      <ul class="entries">
+      <ul class="entries notes">
         {
           notes.map((note) => (
             <li class="note-row row">
@@ -80,9 +78,5 @@ const notes = (await getCollection('notes')).sort(
   .note-row .entry__title,
   .note-row .entry__desc {
     display: block;
-  }
-
-  .note-row .entry__desc {
-    margin-top: 0.55rem;
   }
 </style>

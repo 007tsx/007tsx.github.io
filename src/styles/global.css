@@ -133,8 +133,7 @@ a:hover {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
   text-decoration: none;
 }
 
@@ -162,9 +161,8 @@ a:hover {
 
 .hero__eyebrow {
   font-family: var(--font-mono);
-  font-size: var(--fs-label);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
   color: var(--ink-soft);
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
@@ -207,11 +205,10 @@ main {
   border-top: 1px solid var(--rule-strong);
 }
 
-.section-head__num,
-.section-head__meta {
+.section-head__num {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   color: var(--ink-soft);
   font-variant-numeric: tabular-nums;
 }
@@ -222,11 +219,6 @@ main {
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.01em;
-}
-
-.section-head__meta {
-  text-transform: uppercase;
-  margin-top: 0.15rem;
 }
 
 .entries {
@@ -303,12 +295,26 @@ a:hover .ext {
   text-decoration: none;
 }
 
+.note-row {
+  align-items: baseline;
+}
+
+.notes .row {
+  padding-block: 1.1rem;
+}
+
 .note-row .entry__title {
   font-family: var(--font-display);
-  font-size: var(--fs-h3);
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 1.55;
+  line-height: 1.6;
   letter-spacing: 0.01em;
+}
+
+.note-row .entry__desc {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  line-height: 1.85;
 }
 
 .note-row a:hover .entry__title,
@@ -476,10 +482,6 @@ a:hover .ext {
 
   .section-head__num {
     padding-top: 0.45rem;
-  }
-
-  .section-head__meta {
-    grid-column: 2;
   }
 
   .row {
