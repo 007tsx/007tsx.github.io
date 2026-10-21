@@ -195,6 +195,10 @@ a:hover {
   position: relative;
 }
 
+main {
+  position: relative;
+}
+
 /* ── components ───────────────────────────────────────── */
 .section-head {
   display: grid;
@@ -453,8 +457,7 @@ a:hover .ext {
 
 /* ── wider screens ────────────────────────────────────── */
 @media (min-width: 48rem) {
-  .sheet > section::before,
-  .note::before {
+  main::before {
     content: "";
     position: absolute;
     top: 0;
